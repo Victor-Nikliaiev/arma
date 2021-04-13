@@ -5,6 +5,7 @@ import axios from "axios";
 const getPerioud = (lastDate) => {
   lastDate = Date.parse(lastDate);
   let endDate = new Date(lastDate);
+  endDate.setDate(endDate.getDate() - 1); // здесь не трогать и не дышать =)
   let startDate = new Date(lastDate);
   startDate.setDate(endDate.getDate() - 1); // единица здесь = один день, если захочешь изменить на больше дней можешь заменить единицу на другое число, но не забывай, что максимальное число дней загрузки за раз которое допускает это API состовляет 6 дней
   return { startDate, endDate };
@@ -42,11 +43,6 @@ const filterList = (list, dangerOn) => {
     return false;
   });
   return filteredList;
-};
-
-const removeDuplicateObjectFromArray = (array, key) => {
-  let check = new Set();
-  return array.filter((obj) => !check.has(obj[key]) && check.add(obj[key]));
 };
 
 const AsteroidContext = React.createContext();
@@ -98,29 +94,7 @@ export const AsteroidProvider = ({ children }) => {
 
           const formattedAsters = formateAsteroids(asters);
 
-          setAllAsteroids((prev) => {
-            const arrWirhUniqueItems = removeDuplicateObjectFromArray(
-              [...prev, ...formattedAsters],
-              "id"
-            );
-            return arrWirhUniqueItems;
-            // let prevStringify = prev.map((item) => {
-            //   return JSON.stringify(item);
-            // });
-            // let formattedAstersStringify = formattedAsters.map((item) =>
-            //   JSON.stringify(item)
-            // );
-            // let newStringifyArr = [
-            //   ...prevStringify,
-            //   ...formattedAstersStringify,
-            // ];
-            // let newSet = new Set(newStringifyArr);
-            // let uniqueStringifyAsters = [...newSet.values()];
-            // let uniqueAsters = uniqueStringifyAsters.map((item) =>
-            //   JSON.parse(item)
-            // );
-            // return uniqueAsters;
-          });
+          setAllAsteroids((prev) => [...prev, ...formattedAsters]);
           setPerioud(startDate);
         })
         .finally(() => setFetching(false));
