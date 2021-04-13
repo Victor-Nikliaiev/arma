@@ -5,9 +5,9 @@ import axios from "axios";
 const getPerioud = (lastDate) => {
   lastDate = Date.parse(lastDate);
   let endDate = new Date(lastDate);
-  endDate.setDate(endDate.getDate() - 1); // здесь не трогать и не дышать =)
+  endDate.setDate(endDate.getDate() + 1); // здесь не трогать и не дышать =)
   let startDate = new Date(lastDate);
-  startDate.setDate(endDate.getDate() - 1); // единица здесь = один день, если захочешь изменить на больше дней можешь заменить единицу на другое число, но не забывай, что максимальное число дней загрузки за раз которое допускает это API состовляет 6 дней
+  startDate.setDate(startDate.getDate() + 1); // единица здесь = один день, если захочешь изменить на больше дней можешь заменить единицу на другое число, но не забывай, что максимальное число дней загрузки за раз которое допускает это API состовляет 6 дней
   return { startDate, endDate };
 };
 
