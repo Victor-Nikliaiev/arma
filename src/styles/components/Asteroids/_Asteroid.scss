@@ -1,5 +1,26 @@
 .asteroid {
+  display: grid;
+  grid-template-columns: 80% 1fr;
   border: 2px black solid;
   width: 100%;
   border-radius: 1em;
+  padding: 1em;
+  // text-align: right;
+  .aster-ic-1 {
+    border: 2px solid teal;
+    display: flex;
+    flex-flow: row nowrap;
+    // justify-content: center;
+
+    align-items: center;
+
+    .aster-ic-2 {
+      // margin: 0 auto;
+      margin-left: 50%;
+      padding: 1em 0;
+      border: 2px solid blue;
+      width: fit-content;
+      height: fit-content;
+    }
+  }
 }
