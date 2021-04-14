@@ -18,7 +18,7 @@ const AsteroidInfo = () => {
     <>
       {asterInfo && (
         <div>
-          <h1>Дополнительная информация: {asterInfo.name}</h1>
+          <h1>Дополнительная информация к {asterInfo.name}: </h1>
 
           <div>
             <span>Время максимального сближения{"................."}</span>

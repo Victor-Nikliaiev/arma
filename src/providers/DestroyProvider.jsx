@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { provideFullInfoById } from "../utils/getInfo";
 import { useAsteroidList } from "./AsteroidProvider";
 
 const DestroyContext = React.createContext();
@@ -23,6 +24,10 @@ export const DestroyProvider = ({ children }) => {
     setDestroyList([]);
   };
 
+  const getAsterFullInfoById = (id) => {
+    return provideFullInfoById(id, destroyList);
+  };
+
   return (
     <DestroyContext.Provider
       value={{
@@ -30,6 +35,7 @@ export const DestroyProvider = ({ children }) => {
         addAsterToDestroyList,
         removeAsterFromDestroyList,
         removeAllAstersFromDestroyList,
+        getAsterFullInfoById,
       }}
     >
       {children}

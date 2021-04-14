@@ -1,20 +1,45 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useAsteroidList } from "../../providers/AsteroidProvider";
 import { useDestroyService } from "../../providers/DestroyProvider";
 
-const DestroyItem = ({ aster }) => {
-  const { removeAsterFromDestroyList } = useDestroyService();
+const DestroyItem = ({ asterId }) => {
+  const {
+    removeAsterFromDestroyList,
+    getAsterFullInfoById,
+  } = useDestroyService();
+  const { inLunar } = useAsteroidList();
+  const asteroid = getAsterFullInfoById(asterId);
 
   return (
     <div className="asterToDestroy" style={{ marginBottom: "1rem" }}>
-      <div>Имя: {aster.name}</div>
-      <div>Дата: {aster.date}</div>
-      <div>Расстояние (до луны): {aster.distance.lunar}</div>
-      <div>Расстояние (км): {aster.distance.kilometers}</div>
-      <div>Размер(мин) метры: {aster.diameter.min_meters}</div>
-      <div>Размер(макс) метры: {aster.diameter.max_meters}</div>
-      <div>{aster.isHazardous ? "Опасный" : "Неопасный"}</div>
       <div>
-        <button onClick={() => removeAsterFromDestroyList(aster.id)}>
+        <Link to={`/asteroid/${asterId}`}>
+          <h2>{asteroid.name}</h2>
+        </Link>
+
+        <div>Дата ... {asteroid.date_short}</div>
+
+        <div>
+          Расстояние {"..."}{" "}
+          <span>
+            {inLunar
+              ? asteroid.distance_lunar + " луны"
+              : asteroid.distance + " км"}
+          </span>
+        </div>
+
+        <div>
+          Размер {"..."} {asteroid.size + " м"}
+        </div>
+      </div>
+
+      <div>
+        <div>
+          Оценка:
+          {asteroid.isHazardous ? "Опасный" : "Неопасный"}
+        </div>
+        <button onClick={() => removeAsterFromDestroyList(asteroid.id)}>
           Вызвать бригаду Брюса
         </button>
       </div>

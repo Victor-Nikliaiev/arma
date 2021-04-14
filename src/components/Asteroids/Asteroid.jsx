@@ -3,33 +3,51 @@ import { Link } from "react-router-dom";
 import { useAsteroidList } from "../../providers/AsteroidProvider";
 import { useDestroyService } from "../../providers/DestroyProvider";
 
-const Asteroid = ({ asteroid, inLunar }) => {
+const Asteroid = ({ asterId, inLunar }) => {
   const { addAsterToDestroyList } = useDestroyService();
-  const { deleteAsterFromTheMainList } = useAsteroidList();
+  const {
+    deleteAsterFromTheMainList,
+    getAsterFullInfoById,
+  } = useAsteroidList();
+
+  const asteroid = getAsterFullInfoById(asterId);
   return (
     <div>
-      <Link to={`/asteroid/${asteroid.id}`}>
-        <h2>{asteroid.name}</h2>
-      </Link>
-      <div>id: {asteroid.id}</div>
-      <div>Дата: {asteroid.date}</div>
-      {inLunar ? (
-        <div>Расстояние (до луны): {asteroid.distance.lunar}</div>
-      ) : (
-        <div>Расстояние (км): {asteroid.distance.kilometers}</div>
-      )}
+      <div>
+        <Link to={`/asteroid/${asterId}`}>
+          <h2>{asteroid.name}</h2>
+        </Link>
 
-      <div>Размер(мин) метры: {asteroid.diameter.min_meters}</div>
-      <div>Размер(макс) метры: {asteroid.diameter.max_meters}</div>
-      <div>{asteroid.isHazardous ? "Опасный" : "Неопасный"}</div>
-      <button
-        onClick={() => {
-          addAsterToDestroyList(asteroid.id);
-          deleteAsterFromTheMainList(asteroid.id);
-        }}
-      >
-        На уничтожение
-      </button>
+        <div>Дата ... {asteroid.date_short}</div>
+
+        <div>
+          Расстояние {"..."}{" "}
+          <span>
+            {inLunar
+              ? asteroid.distance_lunar + " луны"
+              : asteroid.distance + " км"}
+          </span>
+        </div>
+
+        <div>
+          Размер {"..."} {asteroid.size + " м"}
+        </div>
+      </div>
+
+      <div>
+        <div>
+          Оценка:
+          {asteroid.isHazardous ? "Опасный" : "Неопасный"}
+        </div>
+        <button
+          onClick={() => {
+            addAsterToDestroyList(asterId);
+            deleteAsterFromTheMainList(asterId);
+          }}
+        >
+          На уничтожение
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { provideFullInfoById } from "../utils/getInfo";
 
 const getPerioud = (lastDate) => {
   lastDate = Date.parse(lastDate);
@@ -139,29 +140,7 @@ export const AsteroidProvider = ({ children }) => {
   };
 
   const getAsterFullInfoById = (id) => {
-    const asteroid = filteredAsteroids.find((aster) => aster.id === id);
-    if (!asteroid) return null;
-
-    const dateParams = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      timeZone: "UTC",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-    };
-
-    const distance = Math.round(asteroid.distance.kilometers);
-    const date = new Date(asteroid.date_mls).toLocaleString("ru", dateParams);
-    const size = Math.round(
-      (asteroid.diameter.max_meters + asteroid.diameter.max_meters) / 2
-    );
-    const name = asteroid.name;
-    const velocity = Math.round(asteroid.velocity.km_per_sec);
-    const orbitBody = asteroid.orbiting_body;
-
-    return { distance, date, size, name, velocity, orbitBody };
+    return provideFullInfoById(id, filteredAsteroids);
   };
 
   const deleteAsterFromTheMainList = (id) => {

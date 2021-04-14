@@ -3,17 +3,21 @@ import DestroyItem from "./DestroyItem";
 import { useDestroyService } from "../../providers/DestroyProvider";
 
 const DestroyBasket = () => {
-  const { destroyList } = useDestroyService();
+  const { destroyList, removeAllAstersFromDestroyList } = useDestroyService();
   return (
     <div>
       {destroyList.length === 0 && <h1>Нет астероидов для ликвидации</h1>}
-      {destroyList && (
+      {destroyList.length > 0 && (
         <div>
           {destroyList.map((aster) => {
-            return <DestroyItem key={aster.id} aster={aster} />;
+            return <DestroyItem key={aster.id} asterId={aster.id} />;
           })}
-          <button>Секретное оружие(уничтожить всё)</button>
-          <span>Только Брюсу не говорите об этом</span>
+          <div>
+            <button onClick={() => removeAllAstersFromDestroyList()}>
+              Секретное оружие(уничтожить всё)
+            </button>
+            <span>Только Брюсу не говорите об этом</span>
+          </div>
         </div>
       )}
     </div>

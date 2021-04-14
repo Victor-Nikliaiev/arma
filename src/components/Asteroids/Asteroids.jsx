@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useAsteroidList } from "../../providers/AsteroidProvider";
 import Asteroid from "./Asteroid";
 
@@ -33,7 +32,7 @@ const Asteroids = () => {
         return (
           <Asteroid
             key={asteroid.id}
-            asteroid={asteroid}
+            asterId={asteroid.id}
             inLunar={inLunar}
             dangerOn={dangerOn}
           />
