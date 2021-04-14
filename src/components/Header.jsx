@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -6,8 +7,8 @@ const Header = () => {
       <div className="logoGroup">
         <h1>ARMAGGEDON V</h1>
         <div>
-          <button>Астероиды</button>
-          <button>Уничтожение</button>
+          <Link to="/">Астероиды</Link>
+          <Link to="/destroy">Уничтожение</Link>
         </div>
       </div>
       <p>

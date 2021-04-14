@@ -3,10 +3,15 @@ import { useAsteroidList } from "../../providers/AsteroidProvider";
 import Asteroid from "./Asteroid";
 
 const Asteroids = () => {
-  const { filteredAsteroids, dangerOn, setDangerOn } = useAsteroidList();
-  const [inLunar, setInLunar] = useState(false);
+  const {
+    filteredAsteroids,
+    dangerOn,
+    setDangerOn,
+    inLunar,
+    setInLunar,
+  } = useAsteroidList();
   const handleCheckboxChange = (e) => {
-    setDangerOn(e.target.checked);
+    setDangerOn(!dangerOn);
   };
   return (
     <>
@@ -15,6 +20,7 @@ const Asteroids = () => {
           type="checkbox"
           name="dangerOn"
           onChange={handleCheckboxChange}
+          checked={dangerOn}
         />{" "}
         Показать только опасные
       </div>

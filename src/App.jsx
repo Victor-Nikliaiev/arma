@@ -2,21 +2,28 @@ import React from "react";
 import Header from "./components/Header";
 import Asteroids from "./components/Asteroids/Asteroids";
 import Footer from "./components/Footer";
-import DestroyBasket from "./components/DestroyBasket";
-import { AsteroidProvider } from "./providers/AsteroidProvider";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import DestroyBasket from "./components/DestroyBasket/DestroyBasket";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import AsteroidInfo from "./components/Asteroids/AsteroidInfo";
 
 const App = () => {
   return (
     <>
-      <AsteroidProvider>
-        <Router>
-          <Header />
-          <Route path="/" exact component={Asteroids} />
-          <Route path="/destroy" component={DestroyBasket} />
-          <Footer />
-        </Router>
-      </AsteroidProvider>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/" exact render={() => <Asteroids />} />
+          <Route path="/asteroid/:id" render={() => <AsteroidInfo />} />
+          <Route path="/destroy" render={() => <DestroyBasket />} />
+          <Redirect to="/" />
+        </Switch>
+        <Footer />
+      </Router>
     </>
   );
 };

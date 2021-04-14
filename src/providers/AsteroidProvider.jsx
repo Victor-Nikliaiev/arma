@@ -17,15 +17,24 @@ const formateAsteroids = (asters) => {
       id: asteroid.id,
       name: asteroid.name,
       date: asteroid.close_approach_data[0].close_approach_date,
+      date_mls: asteroid.close_approach_data[0].epoch_date_close_approach,
       distance: {
         kilometers: asteroid.close_approach_data[0].miss_distance.kilometers,
         lunar: asteroid.close_approach_data[0].miss_distance.lunar,
+      },
+      velocity: {
+        km_per_sec:
+          asteroid.close_approach_data[0].relative_velocity
+            .kilometers_per_second,
+        km_per_hour:
+          asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour,
       },
       diameter: {
         min_meters: asteroid.estimated_diameter.meters.estimated_diameter_min,
         max_meters: asteroid.estimated_diameter.meters.estimated_diameter_max,
       },
       isHazardous: asteroid.is_potentially_hazardous_asteroid,
+      orbiting_body: asteroid.close_approach_data[0].orbiting_body,
     };
   });
 
@@ -55,6 +64,7 @@ export const AsteroidProvider = ({ children }) => {
   const [allAsteroids, setAllAsteroids] = useState([]);
 
   const [dangerOn, setDangerOn] = useState(false);
+  const [inLunar, setInLunar] = useState(false);
   const [filteredAsteroids, setFilteredAsteroids] = useState(() =>
     filterList(allAsteroids, dangerOn)
   );
@@ -66,6 +76,14 @@ export const AsteroidProvider = ({ children }) => {
   useEffect(() => {
     setFilteredAsteroids(filterList(allAsteroids, dangerOn));
   }, [allAsteroids, dangerOn]);
+
+  const getAsteroidById = (id) => {
+    const aster = filteredAsteroids.find((asteroid) => asteroid.id === id);
+    if (aster) {
+      return aster;
+    }
+    return null;
+  };
 
   const setPerioud = (startDate) => {
     let period = getPerioud(startDate);
@@ -120,9 +138,54 @@ export const AsteroidProvider = ({ children }) => {
     }
   };
 
+  const getAsterFullInfoById = (id) => {
+    const asteroid = filteredAsteroids.find((aster) => aster.id === id);
+    if (!asteroid) return null;
+
+    const dateParams = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "UTC",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    };
+
+    const distance = Math.round(asteroid.distance.kilometers);
+    const date = new Date(asteroid.date_mls).toLocaleString("ru", dateParams);
+    const size = Math.round(
+      (asteroid.diameter.max_meters + asteroid.diameter.max_meters) / 2
+    );
+    const name = asteroid.name;
+    const velocity = Math.round(asteroid.velocity.km_per_sec);
+    const orbitBody = asteroid.orbiting_body;
+
+    return { distance, date, size, name, velocity, orbitBody };
+  };
+
+  const deleteAsterFromTheMainList = (id) => {
+    const newFilteredList = filteredAsteroids.filter(
+      (asteroid) => asteroid.id !== id
+    );
+    const newAllAsters = allAsteroids.filter((aster) => aster.id !== id);
+
+    setFilteredAsteroids(newFilteredList);
+    setAllAsteroids(newAllAsters);
+  };
+
   return (
     <AsteroidContext.Provider
-      value={{ filteredAsteroids, dangerOn, setDangerOn }}
+      value={{
+        filteredAsteroids,
+        dangerOn,
+        inLunar,
+        setDangerOn,
+        getAsterFullInfoById,
+        getAsteroidById,
+        deleteAsterFromTheMainList,
+        setInLunar,
+      }}
     >
       {children}
     </AsteroidContext.Provider>
