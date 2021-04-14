@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./styles/App.css";
 import App from "./App";
 import { AsteroidProvider } from "./providers/AsteroidProvider";
 import { DestroyProvider } from "./providers/DestroyProvider";
-
 
 ReactDOM.render(
   <React.StrictMode>

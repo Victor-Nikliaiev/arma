@@ -1,0 +1,96 @@
+.main-container {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+  margin-top: 2em;
+  width: 80%;
+  height: auto;
+  max-width: 1280px;
+  min-width: 768px;
+  border: 2px green solid;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #111;
+  margin-bottom: 1em;
+}
+
+.logo {
+  width: 50%;
+}
+.logo h1 {
+  font-weight: normal;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.logo p {
+  margin-top: 0.2em;
+}
+
+.logoNav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  width: 50%;
+}
+.logoNav .navLink {
+  font-size: 1rem;
+  width: fit-content;
+  height: fit-content;
+  color: black;
+  display: block;
+  text-decoration: none;
+  border-bottom: 1px solid black;
+  margin-left: 0.5em;
+}
+
+.active {
+  font-weight: bold;
+  border: transparent;
+}
+
+.toggleDistanceBtn {
+  line-height: 1;
+  cursor: pointer;
+  background: transparent;
+  font-size: 1rem;
+  color: #111;
+  outline: none;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid #111;
+}
+
+.checkMenu {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-flow: row nowrap;
+  border: 2px solid green;
+  margin-bottom: 1em;
+}
+
+.asteroids {
+  width: 100%;
+  border: 2px solid red;
+}
+
+.asteroid {
+  border: 2px black solid;
+  width: 100%;
+  border-radius: 1em;
+}
+
+/*# sourceMappingURL=App.css.map */

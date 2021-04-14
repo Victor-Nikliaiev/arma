@@ -15,14 +15,16 @@ const App = () => {
   return (
     <>
       <Router>
-        <Header />
-        <Switch>
-          <Route path="/" exact render={() => <Asteroids />} />
-          <Route path="/asteroid/:id" render={() => <AsteroidInfo />} />
-          <Route path="/destroy" render={() => <DestroyBasket />} />
-          <Redirect to="/" />
-        </Switch>
-        <Footer />
+        <section className="main-container">
+          <Header />
+          <Switch>
+            <Route path="/asteroids" exact render={() => <Asteroids />} />
+            <Route path="/asteroid/:id" render={() => <AsteroidInfo />} />
+            <Route path="/destroy" render={() => <DestroyBasket />} />
+            <Redirect to="/asteroids" />
+          </Switch>
+          <Footer />
+        </section>
       </Router>
     </>
   );

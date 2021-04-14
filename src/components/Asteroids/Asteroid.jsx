@@ -12,7 +12,7 @@ const Asteroid = ({ asterId, inLunar }) => {
 
   const asteroid = getAsterFullInfoById(asterId);
   return (
-    <div>
+    <article className="asteroid">
       <div>
         <Link to={`/asteroid/${asterId}`}>
           <h2>{asteroid.name}</h2>
@@ -48,7 +48,7 @@ const Asteroid = ({ asterId, inLunar }) => {
           На уничтожение
         </button>
       </div>
-    </div>
+    </article>
   );
 };
 

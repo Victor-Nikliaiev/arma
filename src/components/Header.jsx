@@ -1,19 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
-      <div className="logoGroup">
-        <h1>ARMAGGEDON V</h1>
-        <div>
-          <Link to="/">Астероиды</Link>
-          <Link to="/destroy">Уничтожение</Link>
-        </div>
+      <div className="logo">
+        <h1>armaggedon v</h1>
+        <p>
+          Сервис мониторинга и уничтожения астероидов, опасно подлетающих
+          к Земле.
+        </p>
       </div>
-      <p>
-        Сервис мониторинга и уничтожения астероидов, опасно подлетающих к Земле.
-      </p>
+      <div className="logoNav">
+        <NavLink className="navLink" activeClassName="active" to="/asteroids">
+          Астероиды
+        </NavLink>
+        <NavLink className="navLink" activeClassName="active" to="/destroy">
+          Уничтожение
+        </NavLink>
+      </div>
     </header>
   );
 };
