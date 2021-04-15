@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/App.css";
+// import "./styles/App.css";
 import App from "./App";
 import { AsteroidProvider } from "./providers/AsteroidProvider";
 import { DestroyProvider } from "./providers/DestroyProvider";

@@ -1,8 +1,9 @@
+import "./Footer.scss";
 import React from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return <div>{currentYear}© Все права и планета защищены</div>;
+  return <footer>{currentYear}© Все права и планета защищены</footer>;
 };
 
 export default Footer;

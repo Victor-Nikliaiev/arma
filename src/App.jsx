@@ -1,7 +1,9 @@
+import "./styles/App.scss";
+
 import React from "react";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Asteroids from "./components/Asteroids/Asteroids";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import DestroyBasket from "./components/DestroyBasket/DestroyBasket";
 import {
   BrowserRouter as Router,

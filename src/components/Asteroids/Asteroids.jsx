@@ -1,3 +1,5 @@
+import "./Asteroids.scss";
+
 import { NavLink } from "react-router-dom";
 import { useAsteroidList } from "../../providers/AsteroidProvider";
 import Asteroid from "./Asteroid";
