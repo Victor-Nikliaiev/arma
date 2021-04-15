@@ -1,26 +1,131 @@
 .asteroid {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 80% 1fr;
+  grid-template-columns: 75% 1fr;
   border: 2px black solid;
   width: 100%;
   border-radius: 1em;
   padding: 1em;
+  margin-bottom: 1em;
   // text-align: right;
-  .aster-ic-1 {
+  &-inner-1 {
     border: 2px solid teal;
-    display: flex;
-    flex-flow: row nowrap;
+    // display: flex;
+    // flex-flow: row nowrap;
     // justify-content: center;
+    // align-items: center;
 
-    align-items: center;
-
-    .aster-ic-2 {
+    &-container-1 {
       // margin: 0 auto;
-      margin-left: 50%;
+      margin-left: 30%;
       padding: 1em 0;
       border: 2px solid blue;
-      width: fit-content;
+      width: 50%;
+      min-width: 200px;
       height: fit-content;
+      &-title {
+        border: none;
+        margin-bottom: 1rem;
+        padding: 0;
+
+        &-link {
+          color: rgb(24, 24, 24);
+          text-decoration: none;
+          margin: 0;
+          padding: 0;
+          border-bottom: 1px solid black;
+        }
+      }
+
+      &-item {
+        border: green 2px solid;
+        display: flex;
+        &-1 {
+          border: 2px solid red;
+          // width: fit-content;
+        }
+        &-2 {
+          border: 2px solid orange;
+          // justify-self: stretch;
+          flex-grow: 1;
+          border-bottom: dotted 1px black;
+        }
+      }
     }
   }
+  &-inner-2 {
+    width: 100%;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // padding-right: 1em;
+    &-container-1 {
+      width: 90%;
+      text-align: center;
+      border: 2px solid greenyellow;
+      display: flex;
+      font-size: 1.5vw;
+      flex-flow: column nowrap;
+      &-isdanger {
+        font-weight: bold;
+        // font-size: 1.5vw;
+      }
+      button {
+        // font-size: 1.5vw;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        margin-top: 0.5em;
+        background: #186dd6;
+        color: #fff;
+        padding: 0.8em;
+        border-radius: 2em;
+        font-weight: 500;
+        font-size: 1.5vw;
+      }
+    }
+  }
+}
+
+.asteroid-bg-danger {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 177, 153, 1) 35%,
+    rgba(255, 8, 68, 1) 100%
+  );
+}
+
+.asteroid-bg-safe {
+  background: linear-gradient(
+    90deg,
+    rgba(207, 243, 125, 1) 35%,
+    rgba(125, 232, 140, 1) 100%
+  );
+}
+
+.asteroid-img {
+  position: absolute;
+  z-index: -999;
+}
+
+.aster-small {
+  left: 10%;
+  top: 10%;
+}
+
+.aster-middle {
+  width: 20%;
+  left: 5%;
+}
+
+.aster-big {
+}
+
+.dino-img {
+  position: absolute;
+  bottom: 0;
+  left: 1em;
 }
