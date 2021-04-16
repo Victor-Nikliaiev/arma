@@ -4,24 +4,18 @@
   overflow: hidden;
   display: grid;
   grid-template-columns: 75% 1fr;
-  border: 2px black solid;
+  border: 2px rgb(45, 44, 44) solid;
   width: 100%;
   border-radius: 1em;
   padding: 1em;
-  margin-bottom: 1em;
-  // text-align: right;
-  &-inner-1 {
-    border: 2px solid teal;
-    // display: flex;
-    // flex-flow: row nowrap;
-    // justify-content: center;
-    // align-items: center;
+  margin-bottom: 2em;
+  -webkit-box-shadow: 5px 5px 13px -3px rgba(0, 0, 0, 0.91);
+  box-shadow: 5px 5px 13px -3px rgba(0, 0, 0, 0.91);
 
+  &-inner-1 {
     &-container-1 {
-      // margin: 0 auto;
       margin-left: 30%;
       padding: 1em 0;
-      border: 2px solid blue;
       width: 50%;
       min-width: 200px;
       height: fit-content;
@@ -40,15 +34,8 @@
       }
 
       &-item {
-        border: green 2px solid;
         display: flex;
-        &-1 {
-          border: 2px solid red;
-          // width: fit-content;
-        }
         &-2 {
-          border: 2px solid orange;
-          // justify-self: stretch;
           flex-grow: 1;
           border-bottom: dotted 1px black;
         }
@@ -57,24 +44,19 @@
   }
   &-inner-2 {
     width: 100%;
-    border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
-    // padding-right: 1em;
     &-container-1 {
       width: 90%;
       text-align: center;
-      border: 2px solid greenyellow;
       display: flex;
       font-size: 1.7vw;
       flex-flow: column nowrap;
       &-isdanger {
         font-weight: bold;
-        // font-size: 1.5vw;
       }
       button {
-        // font-size: 1.5vw;
         outline: none;
         border: none;
         cursor: pointer;
@@ -84,18 +66,17 @@
         padding: 0.8em;
         border-radius: 2em;
         font-weight: 500;
-        font-size: 1.5vw;
+        font-size: 0.8rem;
       }
     }
   }
 }
 
 .asteroid-title {
-  // background: #186dd6;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 74%;
+  bottom: 72%;
   top: 0;
   z-index: -1000;
 }
@@ -117,35 +98,20 @@
 
 @media only screen and (max-width: 575px) {
   .asteroid {
-    // position: absolute;
     display: flex;
-    // grid-template-columns: 75% 1fr;
     flex-flow: column nowrap;
-
-    // padding: 1em;
-
-    // text-align: right;
     &-inner-1 {
-      border: 2px solid teal;
       width: 100%;
-      // display: flex;
-      // flex-flow: row nowrap;
-      // justify-content: center;
-      // align-items: center;
-
       &-container-1 {
-        // margin: 0 auto;
-        // margin-left: 30%;
         padding: 1em 0;
         margin: 0;
-        border: 2px solid blue;
         width: 100%;
-        // min-width: 200px;
         height: fit-content;
         &-title {
           border: none;
           margin-bottom: 1rem;
           padding: 0;
+          line-height: 2rem;
 
           &-link {
             color: rgb(24, 24, 24);
@@ -157,15 +123,8 @@
         }
 
         &-item {
-          border: green 2px solid;
           display: flex;
-          &-1 {
-            border: 2px solid red;
-            // width: fit-content;
-          }
           &-2 {
-            border: 2px solid orange;
-            // justify-self: stretch;
             flex-grow: 1;
             border-bottom: dotted 1px black;
           }
@@ -173,37 +132,17 @@
       }
     }
     &-inner-2 {
-      // width: 100%;
-      // border: 2px solid red;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-      // padding-right: 1em;
       &-container-1 {
-        // width: 90%;
-        // text-align: center;
-        // border: 2px solid greenyellow;
-        // display: flex;
         font-size: 1rem;
         flex-flow: column nowrap;
         &-isdanger {
           font-weight: bold;
-          // font-size: 1.5vw;
         }
         button {
-          // font-size: 1.5vw;
-          // outline: none;
-          // border: none;
-          // cursor: pointer;
-         
-          // background: #186dd6;
-          // color: #fff;
-          // padding: 0.8em;
-          // border-radius: 2em;
-          // font-weight: 500;
-          font-size: 1rem;
+          font-size: 0.8rem;
           width: 50%;
           margin: 0 auto;
+          margin-top: 0.5rem;
         }
       }
     }
@@ -243,7 +182,7 @@
 }
 
 .aster-big {
-  top: 0;
+  top: -2em;
   width: 55%;
 }
 
@@ -276,7 +215,6 @@
 
   .aster-middle {
     top: 0;
-    // width: 20%;
     left: 5%;
   }
 

@@ -11,12 +11,14 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { ParticlesBg } from "./ParticlesBg/ParticlesBg";
 import AsteroidInfo from "./components/Asteroids/AsteroidInfo";
 
 const App = () => {
   return (
     <>
       <Router>
+        <ParticlesBg />
         <section className="main-container">
           <Header />
           <Switch>

@@ -4,44 +4,16 @@ import { Link } from "react-router-dom";
 import { useAsteroidList } from "../../providers/AsteroidProvider";
 import { useDestroyService } from "../../providers/DestroyProvider";
 
-import small from "../../svg/small.svg";
-import middle from "../../svg/middle.svg";
-import big from "../../svg/big.svg";
 import dino from "../../svg/dino.svg";
 
 import "../../styles/StyleReseter.scss";
 import "./DestroyItem.scss";
 
-const setGradientBg = (isHazardous) => {
-  if (isHazardous) {
-    return "asteroid-bg-danger";
-  }
-  return "asteroid-bg-safe";
-};
-
-const setGradientMob = (isHazardous) => {
-  if (isHazardous) {
-    return "asteroid-title-danger";
-  }
-  return "asteroid-title-safe";
-};
-
-const setSvgToImg = (size) => {
-  let path = null;
-
-  if (size <= 85) {
-    path = small;
-    return { id: "small", path };
-  }
-  if (size > 85 && size <= 300) {
-    path = middle;
-    return { id: "middle", path };
-  }
-  if (size > 300) {
-    path = big;
-    return { id: "big", path };
-  }
-};
+import {
+  setGradientBg,
+  setGradientMob,
+  setSvgToImg,
+} from "../../utils/setStyles";
 
 const DestroyItem = ({ asterId }) => {
   const {
@@ -55,7 +27,10 @@ const DestroyItem = ({ asterId }) => {
   return (
     <>
       <article
-        className={`destroy-item ${setGradientBg(asteroid.isHazardous)} `}
+        className={`destroy-item ${setGradientBg(
+          asteroid.isHazardous,
+          "destroy-item"
+        )} `}
       >
         <img
           src={svg.path}
@@ -65,7 +40,8 @@ const DestroyItem = ({ asterId }) => {
         <img className="dino-img" src={dino} alt="dino" />
         <div
           className={`destroy-item-title ${setGradientMob(
-            asteroid.isHazardous
+            asteroid.isHazardous,
+            "destroy-item"
           )}`}
         ></div>
         <div className="destroy-item-inner-1">

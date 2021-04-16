@@ -1,7 +1,3 @@
-.mainAsteroids {
-  // border: 2px solid rgb(201, 90, 90);
-}
-
 .toggleDistanceBtn {
   line-height: 1;
   cursor: pointer;
@@ -14,10 +10,6 @@
   border-bottom: 1px solid #111;
 }
 
-// .active {
-//   font-weight: bold;
-//   border: transparent;
-// }
 @media only screen and (max-width: 575px) {
   .toggleDistanceBtn {
     font-size: 1rem;
@@ -29,23 +21,27 @@
   width: 100%;
   justify-content: space-between;
   flex-flow: row nowrap;
-  border: 2px solid green;
   margin-bottom: 1em;
   span {
-    font-size: 1.8vw;
+    font-size: 1em;
     margin-left: 0.5vw;
   }
   input[type="checkbox"] {
     zoom: calc(100% + 1vw);
   }
   button {
+    transition: all 0.3s;
     margin-left: 0.3vw;
+
+    font-size: 1rem;
+    &:hover {
+      color: rgb(46, 77, 39);
+    }
   }
 }
 
 @media only screen and (max-width: 575px) {
   .checkMenu {
-    // justify-content: space-between;
     flex-flow: column nowrap;
     .check-box {
       margin-bottom: 1em;
@@ -60,7 +56,6 @@
 
 .asteroids {
   width: 100%;
-  border: 2px solid red;
 }
 
 .active {

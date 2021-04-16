@@ -1,7 +1,6 @@
 .asteroid-info {
   width: 100%;
   color: rgb(26, 25, 25);
-  // border: 2px solid blue;
   background: rgb(212, 211, 212);
   border-radius: 0 0 1.5rem 1.5rem;
   &-bg {
@@ -10,7 +9,6 @@
     overflow: hidden;
     width: 100%;
     height: 20vh;
-    // border: 2px solid yellowgreen;
     background: linear-gradient(
       90deg,
       rgba(207, 243, 125, 1) 35%,
@@ -34,7 +32,6 @@
     }
   }
   &-details {
-    // border: 2px solid rgba(255, 8, 68, 1);
     margin: 1rem auto;
     width: 90%;
     height: 40vh;
@@ -52,17 +49,12 @@
 
     @media only screen and (max-width: 575px) {
       &-title {
-        // font-size: 4vw;
         padding-bottom: 1rem;
       }
     }
 
     &-line {
       display: flex;
-      // border: 2px solid fuchsia;
-      & > * {
-        // border: 2px salmon solid;
-      }
       &-space {
         flex-grow: 1;
         border-bottom: 1px dotted black;

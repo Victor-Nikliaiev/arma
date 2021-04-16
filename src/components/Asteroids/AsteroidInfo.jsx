@@ -1,6 +1,5 @@
 import small from "../../svg/small.svg";
 import middle from "../../svg/middle.svg";
-// import big from "../../svg/big.svg";
 
 import "./AsteroidInfo.scss";
 import React, { useEffect, useState } from "react";

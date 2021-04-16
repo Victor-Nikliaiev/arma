@@ -1,6 +1,3 @@
-import small from "../../svg/small.svg";
-import middle from "../../svg/middle.svg";
-import big from "../../svg/big.svg";
 import dino from "../../svg/dino.svg";
 
 import "../../styles/StyleReseter.scss";
@@ -11,36 +8,11 @@ import { Link } from "react-router-dom";
 import { useAsteroidList } from "../../providers/AsteroidProvider";
 import { useDestroyService } from "../../providers/DestroyProvider";
 
-const setGradientBg = (isHazardous) => {
-  if (isHazardous) {
-    return "asteroid-bg-danger";
-  }
-  return "asteroid-bg-safe";
-};
-
-const setGradientMob = (isHazardous) => {
-  if (isHazardous) {
-    return "asteroid-title-danger";
-  }
-  return "asteroid-title-safe";
-};
-
-const setSvgToImg = (size) => {
-  let path = null;
-
-  if (size <= 85) {
-    path = small;
-    return { id: "small", path };
-  }
-  if (size > 85 && size <= 300) {
-    path = middle;
-    return { id: "middle", path };
-  }
-  if (size > 300) {
-    path = big;
-    return { id: "big", path };
-  }
-};
+import {
+  setSvgToImg,
+  setGradientMob,
+  setGradientBg,
+} from "../../utils/setStyles";
 
 const Asteroid = ({ asterId, inLunar }) => {
   const { addAsterToDestroyList } = useDestroyService();
@@ -52,7 +24,9 @@ const Asteroid = ({ asterId, inLunar }) => {
   const svg = setSvgToImg(asteroid.size);
 
   return (
-    <article className={`asteroid ${setGradientBg(asteroid.isHazardous)} `}>
+    <article
+      className={`asteroid ${setGradientBg(asteroid.isHazardous, "asteroid")} `}
+    >
       <img
         src={svg.path}
         className={`asteroid-img aster-${svg.id}`}
@@ -60,7 +34,10 @@ const Asteroid = ({ asterId, inLunar }) => {
       />
       <img className="dino-img" src={dino} alt="dino" />
       <div
-        className={`asteroid-title ${setGradientMob(asteroid.isHazardous)}`}
+        className={`asteroid-title ${setGradientMob(
+          asteroid.isHazardous,
+          "asteroid"
+        )}`}
       ></div>
       <div className="asteroid-inner-1">
         <div className="asteroid-inner-1-container-1">
@@ -91,7 +68,7 @@ const Asteroid = ({ asterId, inLunar }) => {
             <div>
               <span>
                 {inLunar
-                  ? asteroid.distance_lunar + " луны"
+                  ? asteroid.distance_lunar + " лун"
                   : asteroid.distance + " км"}
               </span>
             </div>
