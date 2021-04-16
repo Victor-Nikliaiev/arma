@@ -1,6 +1,4 @@
 import "./Asteroids.scss";
-
-import { NavLink } from "react-router-dom";
 import { useAsteroidList } from "../../providers/AsteroidProvider";
 import Asteroid from "./Asteroid";
 
@@ -18,14 +16,14 @@ const Asteroids = () => {
   return (
     <section className="mainAsteroids">
       <div className="checkMenu">
-        <div>
+        <div className="check-box">
           <input
             type="checkbox"
             name="dangerOn"
             onChange={handleCheckboxChange}
             checked={dangerOn}
-          />{" "}
-          Показать только опасные
+          />
+          <span>Показать только опасные</span>
         </div>
         <div>
           <span>Расстояние </span>

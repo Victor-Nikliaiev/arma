@@ -6,7 +6,7 @@
   line-height: 1;
   cursor: pointer;
   background: transparent;
-  font-size: 1rem;
+  font-size: 1.8vw;
   color: #111;
   outline: none;
   border: none;
@@ -18,7 +18,12 @@
 //   font-weight: bold;
 //   border: transparent;
 // }
-
+@media only screen and (max-width: 575px) {
+  .toggleDistanceBtn {
+    font-size: 1rem;
+    border-bottom: 1px solid #111;
+  }
+}
 .checkMenu {
   display: flex;
   width: 100%;
@@ -26,9 +31,39 @@
   flex-flow: row nowrap;
   border: 2px solid green;
   margin-bottom: 1em;
+  span {
+    font-size: 1.8vw;
+    margin-left: 0.5vw;
+  }
+  input[type="checkbox"] {
+    zoom: calc(100% + 1vw);
+  }
+  button {
+    margin-left: 0.3vw;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .checkMenu {
+    // justify-content: space-between;
+    flex-flow: column nowrap;
+    .check-box {
+      margin-bottom: 1em;
+    }
+
+    span {
+      font-size: 1em;
+      margin-left: 0.5vw;
+    }
+  }
 }
 
 .asteroids {
   width: 100%;
   border: 2px solid red;
+}
+
+.active {
+  font-weight: 600;
+  border: transparent;
 }

@@ -1,3 +1,4 @@
+import "./DestroyBasket.scss";
 import React from "react";
 import DestroyItem from "./DestroyItem";
 import { useDestroyService } from "../../providers/DestroyProvider";
@@ -12,11 +13,26 @@ const DestroyBasket = () => {
           {destroyList.map((aster) => {
             return <DestroyItem key={aster.id} asterId={aster.id} />;
           })}
-          <div>
-            <button onClick={() => removeAllAstersFromDestroyList()}>
+          <div
+            className="pre-circle"
+            onClick={() => removeAllAstersFromDestroyList()}
+          >
+            {/* <button onClick={() => removeAllAstersFromDestroyList()}>
               Секретное оружие(уничтожить всё)
             </button>
-            <span>Только Брюсу не говорите об этом</span>
+             */}
+
+            <div className="circle">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div className="weapon-intro">
+            <span>
+              Секретное оружие (уничтожить всё) Только Брюсу не говорите
+            </span>
           </div>
         </div>
       )}

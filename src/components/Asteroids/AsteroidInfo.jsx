@@ -1,50 +1,114 @@
+import small from "../../svg/small.svg";
+import middle from "../../svg/middle.svg";
+// import big from "../../svg/big.svg";
+
+import "./AsteroidInfo.scss";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAsteroidList } from "../../providers/AsteroidProvider";
+import { useDestroyService } from "../../providers/DestroyProvider";
 
 const AsteroidInfo = () => {
   const { getAsterFullInfoById } = useAsteroidList();
+  const {
+    getAsterFullInfoById: getAsterFullInfoByIdInDestroyList,
+  } = useDestroyService();
   const { id } = useParams();
+
   const [asterInfo, setAsterInfo] = useState(null);
+  let orbitBody;
+  if (asterInfo) {
+    orbitBody = asterInfo.orbitBody === "Earth" ? "Земля" : asterInfo.orbitBody;
+  }
 
   useEffect(() => {
-    const asteroidInfo = getAsterFullInfoById(id);
-    if (asteroidInfo || !asterInfo) {
+    console.log(id);
+    let asteroidInfo = getAsterFullInfoById(id);
+    if (asteroidInfo !== null || !asterInfo) {
       setAsterInfo(asteroidInfo);
-    } // eslint-disable-next-line
-  }, [getAsterFullInfoById, id]);
+    }
+    if (!asteroidInfo || !asterInfo) {
+      asteroidInfo = getAsterFullInfoByIdInDestroyList(id);
+    }
+    if (asteroidInfo) {
+      setAsterInfo(asteroidInfo);
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
       {asterInfo && (
-        <div>
-          <h1>Дополнительная информация к {asterInfo.name}: </h1>
-
-          <div>
-            <span>Время максимального сближения{"................."}</span>
-            <span>{asterInfo.date}</span>
+        <article className="asteroid-info">
+          <div className="asteroid-info-bg">
+            <img className="asteroid-info-bg-small" src={small} alt="small" />
+            <img
+              className="asteroid-info-bg-middle"
+              src={middle}
+              alt="middle"
+            />
+            <img
+              className="asteroid-info-bg-middle2"
+              src={middle}
+              alt="middle"
+            />
           </div>
 
-          <div>
-            <span>Расстояние {"..."}</span>
-            <span>{asterInfo.distance} км</span>
-          </div>
+          <div className="asteroid-info-details">
+            <div className="asteroid-info-details-title">
+              <p>Дополнительная информация к {asterInfo.name}: </p>
+            </div>
+            <div className="asteroid-info-details-line">
+              <div>
+                <span>Время максимального сближения </span>
+              </div>
+              <div className="asteroid-info-details-line-space"></div>
+              <div>
+                <span>{asterInfo.date}</span>
+              </div>
+            </div>
 
-          <div>
-            <span>Размер {"..."}</span>
-            <span>{asterInfo.size} м</span>
-          </div>
+            <div className="asteroid-info-details-line">
+              <div>
+                <span>Расстояние</span>
+              </div>
+              <div className="asteroid-info-details-line-space"></div>
+              <div>
+                <span>{asterInfo.distance} км</span>
+              </div>
+            </div>
 
-          <div>
-            <span>Скорость {"..."}</span>
-            <span>{asterInfo.velocity} км/сек</span>
-          </div>
+            <div className="asteroid-info-details-line">
+              <div>
+                <span>Размер</span>
+              </div>
+              <div className="asteroid-info-details-line-space"></div>
+              <div>
+                <span>{asterInfo.size} м</span>
+              </div>
+            </div>
 
-          <div>
-            <span>Орбита {"..."}</span>
-            <span>{asterInfo.orbitBody}</span>
+            <div className="asteroid-info-details-line">
+              <div>
+                <span>Скорость</span>
+              </div>
+              <div className="asteroid-info-details-line-space"></div>
+              <div>
+                <span>{asterInfo.velocity} км/сек</span>
+              </div>
+            </div>
+
+            <div className="asteroid-info-details-line">
+              <div>
+                <span>Орбита</span>
+              </div>
+              <div className="asteroid-info-details-line-space"></div>
+              <div>
+                <span>{orbitBody}</span>
+              </div>
+            </div>
           </div>
-        </div>
+        </article>
       )}
     </>
   );

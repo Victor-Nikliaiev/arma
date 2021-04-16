@@ -18,6 +18,13 @@ const setGradientBg = (isHazardous) => {
   return "asteroid-bg-safe";
 };
 
+const setGradientMob = (isHazardous) => {
+  if (isHazardous) {
+    return "asteroid-title-danger";
+  }
+  return "asteroid-title-safe";
+};
+
 const setSvgToImg = (size) => {
   let path = null;
 
@@ -52,6 +59,9 @@ const Asteroid = ({ asterId, inLunar }) => {
         alt={svg.id}
       />
       <img className="dino-img" src={dino} alt="dino" />
+      <div
+        className={`asteroid-title ${setGradientMob(asteroid.isHazardous)}`}
+      ></div>
       <div className="asteroid-inner-1">
         <div className="asteroid-inner-1-container-1">
           <h2 className="asteroid-inner-1-container-1-title">

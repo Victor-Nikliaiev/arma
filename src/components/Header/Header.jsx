@@ -1,6 +1,6 @@
 import "./Header.scss";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -13,11 +13,19 @@ const Header = () => {
         </p>
       </div>
       <div className="logoNav">
-        <NavLink className="navLink" activeClassName="active" to="/asteroids">
-          Астероиды
+        <NavLink
+          className="navLink-link"
+          activeClassName="active"
+          to="/asteroids"
+        >
+          <span className="navLink">Астероиды</span>
         </NavLink>
-        <NavLink className="navLink" activeClassName="active" to="/destroy">
-          Уничтожение
+        <NavLink
+          className="navLink-link"
+          activeClassName="active"
+          to="/destroy"
+        >
+          <span className="navLink">Уничтожение</span>
         </NavLink>
       </div>
     </header>
